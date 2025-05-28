@@ -3,3 +3,4 @@
 * Neovim
 * Tmux
 * Oh My Posh
+* Fzf
