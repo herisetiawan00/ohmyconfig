@@ -1,3 +1,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "utils/z"]
+	path = utils/z
+	url = https://github.com/herisetiawan00/z
