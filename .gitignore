@@ -9,6 +9,8 @@
 !shell/**
 !tmux/
 !tmux/**
+tmux/plugins/
+tmux/plugins/**
 !utils/
 !utils/**
 
