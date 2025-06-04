@@ -14,8 +14,8 @@ map(
 	function()
 		local config = vim.diagnostic.config();
 		vim.diagnostic.config({
-			virtual_text = not (config and config.virtual_text) or false,
-			virtual_lines = not (config and config.virtual_lines) or false,
+			virtual_text = not config.virtual_text,
+			virtual_lines = not config.virtual_lines,
 		})
 	end,
 	{ desc = "Toggle Diagnostic Line" }
