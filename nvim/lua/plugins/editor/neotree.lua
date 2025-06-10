@@ -17,19 +17,53 @@ return {
 		source_selector = {
 			statusline = false,
 		},
+		commands = {
+			copy_selector = function(state)
+				local node = state.tree:get_node()
+				local filepath = node:get_id()
+				local filename = node.name
+				local modify = vim.fn.fnamemodify
+
+				local vals = {
+					["Base name"] = modify(filename, ":r"),
+					["Extension"] = modify(filename, ":e"),
+					["File name"] = filename,
+					["Path ($CWD)"] = modify(filepath, ":."),
+					["Path ($HOME)"] = modify(filepath, ":~"),
+					["Path"] = filepath,
+				}
+
+				local options = vim.tbl_filter(
+					function(val)
+						return vals[val] ~= ""
+					end,
+					vim.tbl_keys(vals)
+				)
+				if vim.tbl_isempty(options) then
+					vim.notify("No values to copy", vim.log.levels.WARN)
+					return
+				end
+				table.sort(options)
+				vim.ui.select(options, {
+					prompt = "Choose to copy to clipboard:",
+					format_item = function(item)
+						return ("%s: %s"):format(item, vals[item])
+					end,
+				}, function(choice)
+					local result = vals[choice]
+					if result then
+						vim.notify(("Copied: `%s`"):format(result))
+						vim.fn.setreg("+", result)
+					end
+				end)
+			end,
+		},
 		window = {
 			width = 40,
 			position = "left",
 			mappings = {
 				["l"] = "open",
-				["Y"] = {
-					function(state)
-						local node = state.tree:get_node()
-						local path = node:get_id()
-						vim.fn.setreg("+", path, "c")
-					end,
-					desc = "Copy Path to Clipboard",
-				},
+				['Y'] = "copy_selector",
 			},
 		},
 		default_component_configs = {

@@ -6,9 +6,6 @@
       "segments": [
 				{
           "foreground": "#DDD8BB",
-          "properties": {
-            "macos": "mac"
-          },
           "style": "plain",
           "template": "{{.Icon}}",
           "type": "os"
