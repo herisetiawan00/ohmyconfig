@@ -19,7 +19,7 @@ return {
 				sections = {
 					lualine_a = { 'mode' },
 					lualine_b = { "branch" },
-					lualine_c = { 'filename', path = 1 },
+					lualine_c = { { 'filename', path = 1 } },
 					lualine_x = {
 						'lsp_progress',
 						{
@@ -45,7 +45,7 @@ return {
 								for _, client in pairs(clients) do
 									table.insert(names, client.name)
 								end
-								return 'LSP: ' .. table.concat(names, ', ')
+								return table.concat(names, ', ')
 							end,
 						}
 					},
