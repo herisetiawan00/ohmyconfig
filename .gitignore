@@ -3,6 +3,7 @@
 !kitty/**
 !nvim/
 !nvim/**
+nvim/lazy-lock.json
 !posh/
 !posh/**
 !shell/

@@ -15,5 +15,5 @@ else
 	echo "$ curl https://mise.run | sh"
 fi
 
-. $OMC_DIR/utils/launch-tmux.sh
+# . $OMC_DIR/utils/launch-tmux.sh
 . $OMC_DIR/utils/z/z.sh
