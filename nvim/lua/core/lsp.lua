@@ -2,6 +2,7 @@ vim.lsp.enable({
 	"dartls",
 	"lua_ls",
 	"kotlin_language_server",
+	"rust_analyzer",
 	"tailwindcss",
 	"ts_ls"
 })
