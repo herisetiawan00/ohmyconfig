@@ -48,3 +48,27 @@ map("n", "<leader>of", "<cmd>Other<cr>", { desc = "Files" })
 map("n", "<leader>os", "<cmd>OtherSplit<cr>", { desc = "Files (split)" })
 map("n", "<leader>ov", "<cmd>OtherVSplit<cr>", { desc = "Files (v-split)" })
 
+-- local neotest = require("neotest");
+--
+-- map("n", "<leader>tr", neotest.run.run, { desc = "Run Nearest Test"})
+-- map("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Run Test File"})
+-- map("n", "<leader>ts", neotest.run.stop, { desc = "Stop Test"})
+-- map("n", "<leader>ta", neotest.run.attach, { desc = "Attach Nearest Test"})
+
+local neotest = require("neotest")
+
+vim.keymap.set("n", "<leader>tn", function() neotest.run.run() end, { desc = "Run nearest test" })
+
+vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Run tests in current file" })
+
+vim.keymap.set("n", "<leader>tl", function() neotest.run.run_last() end, { desc = "Run last test" })
+
+vim.keymap.set("n", "<leader>ts", function() neotest.run.stop() end, { desc = "Stop running test" })
+
+vim.keymap.set("n", "<leader>tt", function() neotest.summary.toggle() end, { desc = "Toggle test summary" })
+
+vim.keymap.set("n", "<leader>to", function() neotest.output_panel.toggle() end, { desc = "Toggle output panel" })
+
+vim.keymap.set("n", "<leader>tp", function() neotest.output.open({ enter = true }) end, { desc = "Show output for nearest test" })
+
+vim.keymap.set("n", "<leader>tw", function() neotest.watch.toggle() end, { desc = "Toggle watch for nearest test" })
