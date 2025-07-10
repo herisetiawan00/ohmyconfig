@@ -1,2 +1,1 @@
-require("configs")
-require("core.lsp")
+require('configs')
