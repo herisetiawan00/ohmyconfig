@@ -3,7 +3,7 @@ local map = vim.keymap.set;
 map('x', 'Y', '"+y', { desc = "Global Copy" })
 map('x', 'P', '"+p', { desc = "Global Paste" })
 
-map("n", "<C-e>", "<cmd>NvimTreeToggle<cr>", { desc = "Nvim Tree Toggle"});
+map("n", "<C-e>", "<cmd>NvimTreeToggle<cr>", { desc = "Nvim Tree Toggle" });
 
 map("n", "<C-l>", "<cmd>vertical resize +5<cr>", { desc = "Resize Window Bigger Vertically" })
 map("n", "<C-h>", "<cmd>vertical resize -5<cr>", { desc = "Resize Window Smaller Vertically" })
@@ -59,7 +59,8 @@ local neotest = require("neotest")
 
 vim.keymap.set("n", "<leader>tn", function() neotest.run.run() end, { desc = "Run nearest test" })
 
-vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Run tests in current file" })
+vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end,
+	{ desc = "Run tests in current file" })
 
 vim.keymap.set("n", "<leader>tl", function() neotest.run.run_last() end, { desc = "Run last test" })
 
@@ -69,6 +70,35 @@ vim.keymap.set("n", "<leader>tt", function() neotest.summary.toggle() end, { des
 
 vim.keymap.set("n", "<leader>to", function() neotest.output_panel.toggle() end, { desc = "Toggle output panel" })
 
-vim.keymap.set("n", "<leader>tp", function() neotest.output.open({ enter = true }) end, { desc = "Show output for nearest test" })
+vim.keymap.set("n", "<leader>tp", function() neotest.output.open({ enter = true }) end,
+	{ desc = "Show output for nearest test" })
 
 vim.keymap.set("n", "<leader>tw", function() neotest.watch.toggle() end, { desc = "Toggle watch for nearest test" })
+
+local dapui = require("dapui")
+map("n", "<leader>dc", "<cmd>DapContinue<cr>", { desc = "Continue" })
+map("n", "<leader>dd", "<cmd>DapDisconnect<cr>", { desc = "Disconnect" })
+map("n", "<leader>de", dapui.eval, { desc = "Eval" })
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", { desc = "Toggle Breakpoint" })
+map("n", "<leader>dx", "<cmd>DapClearBreakpoints<cr>", { desc = "Clear Breakpoints" })
+map("n", "<leader>dt", "<cmd>DapTerminate<cr>", { desc = "Terminate" })
+map("n", "<leader>dsi", "<cmd>DapStepInto<cr>", { desc = "Step Into" })
+map("n", "<leader>dso", "<cmd>DapStepOut<cr>", { desc = "Step Out" })
+map("n", "<leader>dsO", "<cmd>DapStepOver<cr>", { desc = "Step Over" })
+
+map("n", "<leader>gbt", "<cmd>GitBlameToggle<cr>", { desc = "Toggle Virtual Line" })
+
+map("n", "<leader>gboc", "<cmd>GitBlameOpenCommitURL<cr>", { desc = "Commit URL" })
+map("n", "<leader>gbof", "<cmd>GitBlameOpenFileURL<cr>", { desc = "File URL" })
+
+map("n", "<leader>gbcs", "<cmd>GitBlameCopySHA<cr>", { desc = "SHA" })
+map("n", "<leader>gbcc", "<cmd>GitBlameCopyCommitURL<cr>", { desc = "Commit URL" })
+map("n", "<leader>gbcf", "<cmd>GitBlameCopyFileURL<cr>", { desc = "File URL" })
+
+map("n", "<leader>gco", "<cmd>GitConflictChooseOurs<cr>", { desc = "Choose Ours" })
+map("n", "<leader>gct", "<cmd>GitConflictChooseTheirs<cr>", { desc = "Choose Theirs" })
+map("n", "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Choose Both" })
+map("n", "<leader>gcx", "<cmd>GitConflictChooseNone<cr>", { desc = "Choose None" })
+map("n", "<leader>gcn", "<cmd>GitConflictNextConflict<cr>", { desc = "Next Conflict" })
+map("n", "<leader>gcp", "<cmd>GitConflictPrevConflict<cr>", { desc = "Previous Conflict" })
+map("n", "<leader>gcl", "<cmd>GitConflictListQf<cr>", { desc = "List Conflict" })

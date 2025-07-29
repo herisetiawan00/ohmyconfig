@@ -2,6 +2,7 @@ return {
 	{ "sidlatau/neotest-dart" },
 	{ "nvim-neotest/neotest-jest" },
 	{ "codymikol/neotest-kotlin" },
+	{ "rcasia/neotest-java" },
 	{
 		"nvim-neotest/neotest",
 		dependencies = {
@@ -12,11 +13,13 @@ return {
 			"sidlatau/neotest-dart",
 			"nvim-neotest/neotest-jest",
 			"codymikol/neotest-kotlin",
+			"rcasia/neotest-java",
 		},
 		config = function()
 			require("neotest").setup({
 				adapters = {
 					require("neotest-kotlin"),
+					require("neotest-java"),
 					require('neotest-dart') {
 						command = 'flutter',
 						use_lsp = true,

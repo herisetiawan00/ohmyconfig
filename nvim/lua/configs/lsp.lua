@@ -2,6 +2,7 @@ vim.lsp.enable({
 	"eslint_ls",
 	"kotlin_ls",
 	"lua_ls",
+	"py_ls",
 	"ts_ls",
 })
 
